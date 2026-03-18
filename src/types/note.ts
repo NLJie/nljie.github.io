@@ -26,6 +26,8 @@ export interface Category {
   id: string;
   slug: string;
   icon: string;
+  parentId?: string;  // 父分类ID，为空表示一级分类
+  order?: number;     // 排序权重
   // 中文
   zh: {
     name: string;
@@ -36,6 +38,7 @@ export interface Category {
     name: string;
     description: string;
   };
+  children?: Category[];  // 子分类
 }
 
 // 视图类型
