@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '@/i18n';
 import { Layout } from '@/components/Layout';
@@ -11,7 +11,7 @@ import './App.css';
 function App() {
   return (
     <I18nextProvider i18n={i18n}>
-      <BrowserRouter>
+      <HashRouter>
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -20,7 +20,7 @@ function App() {
             <Route path="/category/:slug" element={<CategoryPage />} />
           </Routes>
         </Layout>
-      </BrowserRouter>
+      </HashRouter>
     </I18nextProvider>
   );
 }
