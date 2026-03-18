@@ -1,7 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -91,33 +90,7 @@ export function NoteDetailPage() {
 
               {/* Content */}
               <div className="prose prose-slate max-w-none">
-                <ReactMarkdown 
-                  remarkPlugins={[remarkGfm]}
-                  components={{
-                    h1: ({ children }) => <h1 className="text-3xl font-bold text-slate-800 mt-8 mb-4">{children}</h1>,
-                    h2: ({ children }) => <h2 className="text-2xl font-semibold text-slate-800 mt-6 mb-3">{children}</h2>,
-                    h3: ({ children }) => <h3 className="text-xl font-semibold text-slate-800 mt-5 mb-2">{children}</h3>,
-                    p: ({ children }) => <p className="text-slate-700 leading-relaxed mb-4">{children}</p>,
-                    ul: ({ children }) => <ul className="list-disc ml-6 mb-4 text-slate-700">{children}</ul>,
-                    ol: ({ children }) => <ol className="list-decimal ml-6 mb-4 text-slate-700">{children}</ol>,
-                    li: ({ children }) => <li className="mb-1">{children}</li>,
-                    code: ({ className, children }) => {
-                      const isInline = !className;
-                      return isInline ? (
-                        <code className="bg-slate-100 text-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">{children}</code>
-                      ) : (
-                        <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto my-4">
-                          <code className="text-sm font-mono">{children}</code>
-                        </pre>
-                      );
-                    },
-                    blockquote: ({ children }) => <blockquote className="border-l-4 border-indigo-500 pl-4 italic text-slate-600 my-4">{children}</blockquote>,
-                    a: ({ href, children }) => <a href={href} className="text-indigo-600 hover:underline">{children}</a>,
-                    strong: ({ children }) => <strong className="font-semibold text-slate-800">{children}</strong>,
-                  }}
-                >
-                  {note[lang].content}
-                </ReactMarkdown>
+                <MarkdownRenderer content={note[lang].content || ''} />
               </div>
 
               {/* Back Button */}

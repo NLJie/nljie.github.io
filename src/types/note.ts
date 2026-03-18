@@ -12,13 +12,13 @@ export interface Note {
   zh: {
     title: string;
     summary: string;
-    content: string;
+    content?: string;  // 详情页内容，可选（用于动态加载）
   };
   // 英文内容
   en: {
     title: string;
     summary: string;
-    content: string;
+    content?: string;
   };
 }
 
