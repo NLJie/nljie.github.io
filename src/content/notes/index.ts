@@ -15,14 +15,14 @@ import restfulApiZh from './markdown/restful-api.zh.md?raw';
 import restfulApiEn from './markdown/restful-api.en.md?raw';
 import databaseOptimizationZh from './markdown/database-optimization.zh.md?raw';
 import databaseOptimizationEn from './markdown/database-optimization.en.md?raw';
-import stm32GettingStartedZh from './markdown/stm32-getting-started.zh.md?raw';
-import stm32GettingStartedEn from './markdown/stm32-getting-started.en.md?raw';
-import freertosBasicsZh from './markdown/freertos-basics.zh.md?raw';
-import freertosBasicsEn from './markdown/freertos-basics.en.md?raw';
-import canBusProtocolZh from './markdown/can-bus-protocol.zh.md?raw';
-import canBusProtocolEn from './markdown/can-bus-protocol.en.md?raw';
-import pcbDesignGuideZh from './markdown/pcb-design-guide.zh.md?raw';
-import pcbDesignGuideEn from './markdown/pcb-design-guide.en.md?raw';
+import stm32GettingStartedZh from './markdown/mcu/stm32/stm32-getting-started.zh.md?raw';
+import stm32GettingStartedEn from './markdown/mcu/stm32/stm32-getting-started.en.md?raw';
+import freertosBasicsZh from './markdown/rtos/freertos/freertos-basics.zh.md?raw';
+import freertosBasicsEn from './markdown/rtos/freertos/freertos-basics.en.md?raw';
+import canBusProtocolZh from './markdown/protocols/can/can-bus-protocol.zh.md?raw';
+import canBusProtocolEn from './markdown/protocols/can/can-bus-protocol.en.md?raw';
+import pcbDesignGuideZh from './markdown/hardware-design/pcb/pcb-design-guide.zh.md?raw';
+import pcbDesignGuideEn from './markdown/hardware-design/pcb/pcb-design-guide.en.md?raw';
 
 // 笔记数据
 export const notes: Note[] = [
