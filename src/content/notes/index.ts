@@ -15,6 +15,14 @@ import restfulApiZh from './markdown/restful-api.zh.md?raw';
 import restfulApiEn from './markdown/restful-api.en.md?raw';
 import databaseOptimizationZh from './markdown/database-optimization.zh.md?raw';
 import databaseOptimizationEn from './markdown/database-optimization.en.md?raw';
+import stm32GettingStartedZh from './markdown/stm32-getting-started.zh.md?raw';
+import stm32GettingStartedEn from './markdown/stm32-getting-started.en.md?raw';
+import freertosBasicsZh from './markdown/freertos-basics.zh.md?raw';
+import freertosBasicsEn from './markdown/freertos-basics.en.md?raw';
+import canBusProtocolZh from './markdown/can-bus-protocol.zh.md?raw';
+import canBusProtocolEn from './markdown/can-bus-protocol.en.md?raw';
+import pcbDesignGuideZh from './markdown/pcb-design-guide.zh.md?raw';
+import pcbDesignGuideEn from './markdown/pcb-design-guide.en.md?raw';
 
 // 笔记数据
 export const notes: Note[] = [
@@ -512,6 +520,82 @@ Handle distributed transactions through compensating operations for eventual con
       title: 'Database Performance Optimization Guide',
       summary: 'Index optimization, query optimization, caching strategies for comprehensive database performance.',
       content: databaseOptimizationEn
+    }
+  },
+  {
+    id: '11',
+    slug: 'stm32-getting-started',
+    status: 'published',
+    category: 'mcu',
+    tags: ['STM32', 'ARM', 'Embedded'],
+    createdAt: '2024-03-30',
+    updatedAt: '2024-03-30',
+    zh: {
+      title: 'STM32 入门完全指南',
+      summary: '从开发环境搭建到第一个程序，STM32 单片机入门教程。',
+      content: stm32GettingStartedZh
+    },
+    en: {
+      title: 'STM32 Getting Started Guide',
+      summary: 'From environment setup to first program, STM32 microcontroller tutorial.',
+      content: stm32GettingStartedEn
+    }
+  },
+  {
+    id: '12',
+    slug: 'freertos-basics',
+    status: 'published',
+    category: 'rtos',
+    tags: ['FreeRTOS', 'RTOS', 'Embedded'],
+    createdAt: '2024-04-02',
+    updatedAt: '2024-04-02',
+    zh: {
+      title: 'FreeRTOS 实时操作系统入门',
+      summary: '任务管理、信号量、队列通信，FreeRTOS 核心概念详解。',
+      content: freertosBasicsZh
+    },
+    en: {
+      title: 'FreeRTOS Real-Time Operating System Basics',
+      summary: 'Task management, semaphores, queue communication, FreeRTOS core concepts.',
+      content: freertosBasicsEn
+    }
+  },
+  {
+    id: '13',
+    slug: 'can-bus-protocol',
+    status: 'published',
+    category: 'protocols',
+    tags: ['CAN', 'Automotive', 'Communication'],
+    createdAt: '2024-04-05',
+    updatedAt: '2024-04-05',
+    zh: {
+      title: 'CAN 总线协议详解',
+      summary: '从物理层到应用层，CAN 总线原理与 STM32 编程实战。',
+      content: canBusProtocolZh
+    },
+    en: {
+      title: 'CAN Bus Protocol Detailed Guide',
+      summary: 'From physical to application layer, CAN bus principles and STM32 programming.',
+      content: canBusProtocolEn
+    }
+  },
+  {
+    id: '14',
+    slug: 'pcb-design-guide',
+    status: 'published',
+    category: 'hardware-design',
+    tags: ['PCB', 'Hardware', 'Design'],
+    createdAt: '2024-04-08',
+    updatedAt: '2024-04-08',
+    zh: {
+      title: 'PCB 设计实战指南',
+      summary: '布局布线、电源完整性、EMC 设计，高质量 PCB 设计要点。',
+      content: pcbDesignGuideZh
+    },
+    en: {
+      title: 'PCB Design Practical Guide',
+      summary: 'Layout routing, power integrity, EMC design, high-quality PCB design essentials.',
+      content: pcbDesignGuideEn
     }
   }
 ];
