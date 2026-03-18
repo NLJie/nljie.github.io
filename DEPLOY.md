@@ -67,42 +67,106 @@ npm run preview
 ## 目录结构说明
 
 ```
-content/
-├── notes/           # 笔记 Markdown 文件
-│   ├── react-hooks.md
-│   ├── nodejs-performance.md
-│   └── ...
-├── categories/      # 分类配置
+src/content/
+├── categories/           # 分类配置
 │   └── index.ts
-└── images/          # 笔记图片
-    └── ...
+└── notes/
+    ├── index.ts          # 笔记元数据
+    └── markdown/         # Markdown 文件
+        ├── react-hooks.zh.md
+        ├── react-hooks.en.md
+        └── ...
 ```
 
 ### 添加新笔记
 
-1. 在 `content/notes/` 目录下创建 `.md` 文件
-2. 按照以下格式编写 frontmatter：
+#### 方式 1：分离的 Markdown 文件（推荐）
+
+1. **创建 Markdown 文件**：
+   - 中文版本：`src/content/notes/markdown/your-note.zh.md`
+   - 英文版本：`src/content/notes/markdown/your-note.en.md`
+
+2. **编写 Markdown 内容**（支持完整的 Markdown + GFM 语法）：
 
 ```markdown
----
-id: unique-id
-slug: url-slug
-status: published  # 或 draft
-category: frontend # 分类 slug
-tags: ['Tag1', 'Tag2']
-createdAt: '2024-03-15'
-updatedAt: '2024-03-18'
-zh:
-  title: '中文标题'
-  summary: '中文摘要'
-en:
-  title: 'English Title'
-  summary: 'English summary'
----
+## 标题
 
-# 正文内容（Markdown 格式）
+这是一段正文，支持：
 
-支持代码块、列表、标题等 Markdown 语法。
+- **加粗**、*斜体*、~~删除线~~
+- `行内代码`
+- [链接](https://example.com)
+
+### 代码块
+
+```jsx
+const [count, setCount] = useState(0);
 ```
 
-3. 提交并推送，网站会自动更新
+### 表格
+
+| 特性 | 支持 |
+|------|------|
+| GFM | ✅ |
+| 表格 | ✅ |
+
+### 任务列表
+
+- [x] 已完成
+- [ ] 未完成
+```
+
+3. **在 `src/content/notes/index.ts` 中导入**：
+
+```typescript
+// 1. 导入 Markdown 文件
+import yourNoteZh from './markdown/your-note.zh.md?raw';
+import yourNoteEn from './markdown/your-note.en.md?raw';
+
+// 2. 添加到 notes 数组
+export const notes: Note[] = [
+  {
+    id: '6',
+    slug: 'your-note-slug',
+    status: 'published',
+    category: 'frontend',  // 分类 slug
+    tags: ['React', 'Hooks'],
+    createdAt: '2024-03-20',
+    updatedAt: '2024-03-20',
+    zh: {
+      title: '你的笔记标题',
+      summary: '简短摘要描述...',
+      content: yourNoteZh  // 使用导入的 Markdown
+    },
+    en: {
+      title: 'Your Note Title',
+      summary: 'Short summary...',
+      content: yourNoteEn
+    }
+  },
+  // ... 其他笔记
+];
+```
+
+#### 方式 2：内联 Markdown（简单笔记）
+
+```typescript
+{
+  id: '7',
+  slug: 'simple-note',
+  // ...
+  zh: {
+    title: '简单笔记',
+    summary: '摘要',
+    content: `## 标题
+    
+直接用模板字符串写 Markdown 内容。
+
+- 列表项 1
+- 列表项 2
+`
+  }
+}
+```
+
+4. **提交并推送**，网站会自动更新

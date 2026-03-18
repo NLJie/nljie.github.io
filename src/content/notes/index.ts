@@ -1,8 +1,12 @@
 import type { Note } from '@/types/note';
 
-// 笔记数据 - 直接以 TypeScript 对象存储
-// 这样更可靠，且支持类型检查
+// 导入 Markdown 文件
+import reactHooksZh from './markdown/react-hooks.zh.md?raw';
+import reactHooksEn from './markdown/react-hooks.en.md?raw';
+import nodejsPerfZh from './markdown/nodejs-performance.zh.md?raw';
+import nodejsPerfEn from './markdown/nodejs-performance.en.md?raw';
 
+// 笔记数据
 export const notes: Note[] = [
   {
     id: '1',
@@ -15,116 +19,12 @@ export const notes: Note[] = [
     zh: {
       title: 'React Hooks 最佳实践',
       summary: '深入理解 React Hooks 的使用模式，包括 useState、useEffect、useCallback 和 useMemo 的正确用法。',
-      content: `## useState 使用技巧
-
-\`\`\`jsx
-const [count, setCount] = useState(0);
-const [user, setUser] = useState({ name: '', age: 0 });
-\`\`\`
-
-### 函数式更新
-
-当新状态依赖于旧状态时，使用函数式更新：
-
-\`\`\`jsx
-setCount(prevCount => prevCount + 1);
-\`\`\`
-
-## useEffect 依赖管理
-
-正确管理依赖数组是避免无限循环和过期闭包的关键：
-
-\`\`\`jsx
-useEffect(() => {
-  console.log('Component mounted');
-  return () => {
-    console.log('Component will unmount');
-  };
-}, []);
-\`\`\`
-
-## useCallback 和 useMemo
-
-用于性能优化，但过度使用可能适得其反：
-
-\`\`\`jsx
-const memoizedCallback = useCallback(() => {
-  doSomething(a, b);
-}, [a, b]);
-\`\`\`
-
-## 自定义 Hooks
-
-将逻辑抽离到自定义 Hooks 中，提高代码复用性：
-
-\`\`\`jsx
-function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-  useEffect(() => {
-    const updateSize = () => setSize([window.innerWidth, window.innerHeight]);
-    window.addEventListener('resize', updateSize);
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-}
-\`\`\``
+      content: reactHooksZh
     },
     en: {
       title: 'React Hooks Best Practices',
       summary: 'Deep dive into React Hooks usage patterns, including proper usage of useState, useEffect, useCallback, and useMemo.',
-      content: `## useState Tips
-
-\`\`\`jsx
-const [count, setCount] = useState(0);
-const [user, setUser] = useState({ name: '', age: 0 });
-\`\`\`
-
-### Functional Updates
-
-When the new state depends on the old state, use functional updates:
-
-\`\`\`jsx
-setCount(prevCount => prevCount + 1);
-\`\`\`
-
-## useEffect Dependency Management
-
-Proper dependency management is key to avoiding infinite loops and stale closures:
-
-\`\`\`jsx
-useEffect(() => {
-  console.log('Component mounted');
-  return () => {
-    console.log('Component will unmount');
-  };
-}, []);
-\`\`\`
-
-## useCallback and useMemo
-
-Used for performance optimization, but overuse may be counterproductive:
-
-\`\`\`jsx
-const memoizedCallback = useCallback(() => {
-  doSomething(a, b);
-}, [a, b]);
-\`\`\`
-
-## Custom Hooks
-
-Extract logic into custom Hooks to improve code reusability:
-
-\`\`\`jsx
-function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-  useEffect(() => {
-    const updateSize = () => setSize([window.innerWidth, window.innerHeight]);
-    window.addEventListener('resize', updateSize);
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-}
-\`\`\``
+      content: reactHooksEn
     }
   },
   {
@@ -138,114 +38,12 @@ function useWindowSize() {
     zh: {
       title: 'Node.js 性能优化指南',
       summary: '从事件循环、内存管理到集群部署，全面提升 Node.js 应用性能。',
-      content: `## 事件循环优化
-
-Node.js 的核心是事件循环，理解它对于性能优化至关重要：
-
-### 避免阻塞事件循环
-
-\`\`\`javascript
-// 不好的做法
-app.get('/slow', (req, res) => {
-  for (let i = 0; i < 1e9; i++) {} // 阻塞！
-  res.send('Done');
-});
-
-// 好的做法
-app.get('/fast', async (req, res) => {
-  await someAsyncOperation();
-  res.send('Done');
-});
-\`\`\`
-
-## 内存管理
-
-### 监控内存使用
-
-\`\`\`javascript
-const usage = process.memoryUsage();
-console.log('Heap used:', usage.heapUsed / 1024 / 1024, 'MB');
-\`\`\`
-
-### 避免内存泄漏
-
-- 及时清理事件监听器
-- 注意闭包中的引用
-- 使用 WeakMap/WeakSet 管理缓存
-
-## 集群部署
-
-利用多核 CPU：
-
-\`\`\`javascript
-const cluster = require('cluster');
-const os = require('os');
-
-if (cluster.isMaster) {
-  const numCPUs = os.cpus().length;
-  for (let i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
-} else {
-  require('./app');
-}
-\`\`\``
+      content: nodejsPerfZh
     },
     en: {
       title: 'Node.js Performance Optimization Guide',
       summary: 'From event loop, memory management to cluster deployment, comprehensively improve Node.js application performance.',
-      content: `## Event Loop Optimization
-
-The event loop is the core of Node.js, and understanding it is crucial for performance optimization:
-
-### Avoid Blocking the Event Loop
-
-\`\`\`javascript
-// Bad practice
-app.get('/slow', (req, res) => {
-  for (let i = 0; i < 1e9; i++) {} // Blocking!
-  res.send('Done');
-});
-
-// Good practice
-app.get('/fast', async (req, res) => {
-  await someAsyncOperation();
-  res.send('Done');
-});
-\`\`\`
-
-## Memory Management
-
-### Monitor Memory Usage
-
-\`\`\`javascript
-const usage = process.memoryUsage();
-console.log('Heap used:', usage.heapUsed / 1024 / 1024, 'MB');
-\`\`\`
-
-### Avoid Memory Leaks
-
-- Clean up event listeners promptly
-- Watch for references in closures
-- Use WeakMap/WeakSet for caching
-
-## Cluster Deployment
-
-Utilize multi-core CPUs:
-
-\`\`\`javascript
-const cluster = require('cluster');
-const os = require('os');
-
-if (cluster.isMaster) {
-  const numCPUs = os.cpus().length;
-  for (let i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
-} else {
-  require('./app');
-}
-\`\`\``
+      content: nodejsPerfEn
     }
   },
   {
