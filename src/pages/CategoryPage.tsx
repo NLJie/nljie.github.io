@@ -10,22 +10,46 @@ import {
   ChevronRight,
   BookOpen,
   Code,
-  Server,
-  Brain,
-  Cloud,
-  Layers
+  Cpu, 
+  Microchip,
+  Grid3x3,
+  Timer,
+  Terminal,
+  FileCode,
+  Network,
+  Wifi,
+  Wrench,
+  CircuitBoard,
+  Car,
+  Radio,
+  Factory,
+  Calculator
 } from 'lucide-react';
 import { getNotesByCategory } from '@/content/notes';
 import { getCategoryBySlug } from '@/content/categories';
 import type { Note } from '@/types/note';
 
-// 图标映射
+// 图标映射 - 嵌入式方向
 const categoryIcons: Record<string, React.ElementType> = {
+  mcu: Cpu,
+  mpu: Microchip,
+  fpga: Grid3x3,
+  rtos: Timer,
+  'embedded-linux': Terminal,
+  firmware: FileCode,
+  protocols: Network,
+  network: Wifi,
+  tools: Wrench,
+  'hardware-design': CircuitBoard,
+  automotive: Car,
+  iot: Radio,
+  industrial: Factory,
+  'embedded-c': Code,
+  algorithms: Calculator,
+  // 兼容旧分类
   frontend: Code,
-  backend: Server,
-  ai: Brain,
-  devops: Cloud,
-  architecture: Layers,
+  backend: Microchip,
+  devops: Wrench,
 };
 
 export function CategoryPage() {

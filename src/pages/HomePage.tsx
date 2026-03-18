@@ -3,18 +3,56 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, BookOpen, Code, Server, Brain, Cloud, Layers } from 'lucide-react';
+import { 
+  ArrowRight, 
+  BookOpen, 
+  Code, 
+  Cpu, 
+  Microchip,
+  Grid3x3,
+  Timer,
+  Terminal,
+  FileCode,
+  Network,
+  Wifi,
+  Wrench,
+  CircuitBoard,
+  Car,
+  Radio,
+  Factory,
+  Calculator
+} from 'lucide-react';
 import { getPublishedNotes } from '@/content/notes';
 import { categories } from '@/content/categories';
 import type { Note } from '@/types/note';
 
-// 图标映射
+// 图标映射 - 嵌入式方向
 const categoryIcons: Record<string, React.ElementType> = {
+  // 硬件平台
+  mcu: Cpu,
+  mpu: Microchip,
+  fpga: Grid3x3,
+  // 嵌入式软件
+  rtos: Timer,
+  'embedded-linux': Terminal,
+  firmware: FileCode,
+  // 通信协议
+  protocols: Network,
+  network: Wifi,
+  // 开发工具
+  tools: Wrench,
+  'hardware-design': CircuitBoard,
+  // 应用领域
+  automotive: Car,
+  iot: Radio,
+  industrial: Factory,
+  // 编程与算法
+  'embedded-c': Code,
+  algorithms: Calculator,
+  // 兼容旧分类
   frontend: Code,
-  backend: Server,
-  ai: Brain,
-  devops: Cloud,
-  architecture: Layers,
+  backend: Microchip,
+  devops: Wrench,
 };
 
 export function HomePage() {
